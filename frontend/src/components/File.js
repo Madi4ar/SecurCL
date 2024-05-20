@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function File({ title, size, onClick, url }) {
   return (
     <>
-      <div className="mt-3 px-5 py-3 rounded-xl min-w-52 bg-white flex justify-between items-center border border-[#ccc]">
+      <div className="mt-3 px-5 py-3 rounded-xl min-w-80 bg-white flex justify-between items-center border border-[#ccc]">
         <div className="flex items-center">
           <svg
             width="24"
