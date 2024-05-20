@@ -1,8 +1,10 @@
-import Header from "@/components/Header";
-import banner from "../../../public/images/banner.png";
-import datacenter from "../../../public/images/date-center.png";
-import layer from "../../../public/images/layer-about.png";
-import Image from "next/image";
+import Header from '@/components/Header';
+import banner from '../../../public/images/banner.png';
+import datacenter from '../../../public/images/date-center.png';
+import layer from '../../../public/images/layer-about.png';
+import Image from 'next/image';
+import Link from 'next/link';
+
 export default function About() {
   return (
     <>
@@ -10,13 +12,28 @@ export default function About() {
         <Image src={banner} className="w-full relative " />
         <div className="w-[1305px] mx-auto mt-3">
           <div className="flex items-center justify-between absolute top-20">
-            <h1 className="text-white text-4xl font-bold w-[528px]">
-              SecureCL:{" "}
-              <span className="text-[#2C2A50]">
-                Secure and Efficient Database
-              </span>{" "}
-              Solutions for Your Business
-            </h1>
+            <div className="flex flex-col">
+              <h1 className="text-white text-4xl font-bold w-[528px]">
+                SecureCL:{' '}
+                <span className="text-[#2C2A50]">
+                  Secure and Efficient Database
+                </span>{' '}
+                Solutions for Your Business
+              </h1>
+              <div className="mt-3 flex items-center">
+                <Link
+                  className="py-3 px-5 text-white rounded-xl bg-[#2C2A50]"
+                  href="/registration">
+                  Get Started
+                </Link>
+
+                <Link
+                  className="ml-4 py-3 px-5 text-[#2C2A50] rounded-xl bg-white border border-[#2C2A50]"
+                  href="/">
+                  Show more
+                </Link>
+              </div>
+            </div>
 
             <Image src={datacenter} className="" />
           </div>
@@ -24,11 +41,13 @@ export default function About() {
       </div>
 
       <div className="w-[1305px] mx-auto mt-10 ">
-        <div className="flex items-center justify-between">
-          <Image src={layer} />
-          <div className="flex flex-col ml-14">
+        <div className="flex items-center justify-between w-full">
+          <div className="w-1/2">
+            <Image src={layer} className="w-full" />
+          </div>
+          <div className="flex flex-col ml-14 w-1/2">
             <h1 className="text-3xl font-bold text-[#180D5B]">
-              Platform SecureCL{" "}
+              Platform SecureCL{' '}
             </h1>
             <p className="mt-3 text-xl">
               SecureCL is a reliable solution for securely storing and
@@ -51,8 +70,7 @@ export default function About() {
               height="64"
               viewBox="0 0 64 64"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M11 11H9C8.45 11 8 10.55 8 10C8 9.45 8.45 9 9 9H11C11.55 9 12 9.45 12 10C12 10.55 11.55 11 11 11Z"
                 fill="#6B71F2"
@@ -120,8 +138,7 @@ export default function About() {
               height="64"
               viewBox="0 0 64 64"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M32 55.2C31.9 55.2 31.79 55.18 31.7 55.15L30.48 54.76C18.22 50.84 12 43.34 12 32.48V16.75C12 16.33 12.26 15.96 12.65 15.81L31.65 8.78998C31.87 8.70998 32.12 8.70998 32.34 8.78998L51.34 15.81C51.73 15.96 51.99 16.33 51.99 16.75V32.48C51.99 43.34 45.77 50.84 33.51 54.76L32.29 55.15C32.19 55.18 32.09 55.2 31.99 55.2H32ZM14 17.45V32.48C14 42.38 19.75 49.23 31.09 52.86L32 53.15L32.91 52.86C44.25 49.23 50 42.38 50 32.48V17.45L32 10.8L14 17.45Z"
                 fill="#6B71F2"
@@ -169,8 +186,7 @@ export default function About() {
               height="64"
               viewBox="0 0 64 64"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M50 43C49.45 43 49 42.55 49 42C49 41.45 49.45 41 50 41C55.51 41 60 36.51 60 31C60 25.49 55.51 21 50 21C49.41 21 48.79 21.06 48.17 21.17C47.88 21.23 47.58 21.15 47.35 20.96C47.12 20.77 46.99 20.49 46.99 20.19C46.99 20.17 46.99 20.04 46.99 20.02C46.99 11.73 40.26 5 31.99 5C23.72 5 16.99 11.73 16.99 20V20.19C16.99 20.49 16.86 20.77 16.63 20.96C16.4 21.15 16.1 21.23 15.81 21.17C15.19 21.05 14.57 21 13.98 21C8.47 21 3.98 25.49 3.98 31C3.98 36.51 8.47 41 13.98 41C14.53 41 14.98 41.45 14.98 42C14.98 42.55 14.53 43 13.98 43C7.36 43 1.98 37.62 1.98 31C1.98 24.05 7.89 18.41 15.01 19.05C15.51 10.12 22.93 3 31.98 3C41.03 3 48.46 10.11 48.95 19.05C56.06 18.42 61.98 24.05 61.98 31C61.98 37.95 56.6 43 49.98 43H50Z"
                 fill="#0A0F26"
@@ -204,8 +220,7 @@ export default function About() {
               height="64"
               viewBox="0 0 64 64"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M27.99 58.0001C27.89 58.0001 27.79 57.9901 27.69 57.9601L26.08 57.4601C10.77 52.7701 3 43.7401 3 30.6001V11.3801C3 10.9601 3.27 10.5801 3.67 10.4401L27.67 2.06007C27.88 1.99007 28.12 1.99007 28.33 2.06007L52.33 10.4401C52.73 10.5801 53 10.9601 53 11.3801V30.6001C53 32.1901 52.88 33.7701 52.64 35.2901C52.57 35.7801 52.16 36.1601 51.65 36.1601C51.1 36.1601 50.65 35.7201 50.65 35.1601C50.65 35.1001 50.65 35.0501 50.66 34.9901C50.88 33.5701 51 32.0901 51 30.5901V12.0901L28 4.06007L5 12.0901V30.6001C5 42.7601 12.29 51.1501 26.67 55.5401L28.28 56.0401C28.81 56.2001 29.1 56.7601 28.94 57.2901C28.81 57.7201 28.41 57.9901 27.99 57.9901V58.0001Z"
                 fill="#6B71F2"
