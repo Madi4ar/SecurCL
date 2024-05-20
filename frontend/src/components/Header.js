@@ -1,6 +1,6 @@
-import Image from "next/image";
-import logo from "../../public/images/logo.svg";
-import Link from "next/link";
+import Image from 'next/image';
+import logo from '../../public/images/logo.svg';
+import Link from 'next/link';
 function Header() {
   return (
     <>
@@ -11,18 +11,21 @@ function Header() {
           </Link>
 
           <nav>
-            <ul className="flex items-center justify-between w-96 ">
+            <ul className="flex items-center justify-between w-[500px]">
               <li className="font-semibold text-base">
                 <Link href="#about">About us</Link>
               </li>
               <li className="font-semibold text-base">
-                <Link href="/getstarted">Get started</Link>
+                <Link href="#info">Get started</Link>
               </li>
               <li className="font-semibold text-base">
-                <Link href="/whysecurecl">Why SecureCL</Link>
+                <Link href="#whychoose">Why SecureCL</Link>
               </li>
               <li className="font-semibold text-base">
-                <Link href="/contacts">Contacts</Link>
+                <Link href="#contacts">Contacts</Link>
+              </li>
+              <li className="font-semibold text-base">
+                <Link href="/registration">Log in</Link>
               </li>
             </ul>
           </nav>
