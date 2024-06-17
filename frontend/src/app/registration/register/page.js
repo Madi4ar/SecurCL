@@ -1,9 +1,42 @@
+'use client';
 import Image from 'next/image';
 import banner from '../../../../public/images/registration-banner.png';
 import logo from '../../../../public/images/logo.svg';
 import Link from 'next/link';
 import Button from '@/components/Button';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 export default function Register() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Submitting:', { username, email, password });
+    try {
+      const response = await fetch(
+        'http://localhost:3000/api/user/registration',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, email, password }),
+        }
+      );
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed');
+      }
+      router.push('/registration');
+    } catch (error) {
+      console.error('Registration error:', error);
+      setError(error.message);
+    }
+  };
   return (
     <>
       <div className="w-[1305px] mx-auto">
@@ -28,42 +61,34 @@ export default function Register() {
               Log in to your account
             </h1>
 
-            <div className="mt-20 flex flex-col w-96">
-              <div className="flex">
+            <div className="mt-20 ">
+              <form className="flex flex-col w-96" onSubmit={handleSubmit}>
                 <input
-                  className="w-44 border border-[#C8C8C8] bg-white py-1.5 px-2.5 rounded-lg"
-                  placeholder="Name"
+                  className="w-full border border-[#C8C8C8] bg-white py-1.5 px-2.5 rounded-lg"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
 
                 <input
-                  className="w-44 ml-8 border border-[#C8C8C8] bg-white py-1.5 px-2.5 rounded-lg"
-                  placeholder="Last Name"
+                  placeholder="Email address"
+                  type="email"
+                  className="w-full mt-3 border border-[#C8C8C8] bg-white py-1.5 px-2.5 rounded-lg"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
-              </div>
-              <input
-                placeholder="Email address"
-                type="email"
-                className="w-full mt-3 border border-[#C8C8C8] bg-white py-1.5 px-2.5 rounded-lg"
-                required
-              />
 
-              <input
-                placeholder="Password"
-                type="password"
-                className="w-full mt-3 border border-[#C8C8C8] bg-white py-1.5 px-2.5 rounded-lg"
-              />
-
-              <input
-                placeholder="Confirm password"
-                type="password"
-                className="w-full mt-3 border border-[#C8C8C8] bg-white py-1.5 px-2.5 rounded-lg"
-              />
-
-              <Link
-                href="/registration/register"
-                className="bg-[#488BD7] text-center rounded text-white py-2 mt-5 uppercase font-bold">
-                Create account
-              </Link>
+                <input
+                  placeholder="Password"
+                  type="password"
+                  className="w-full mt-3 border border-[#C8C8C8] bg-white py-1.5 px-2.5 rounded-lg"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                {error && <p>{error}</p>}
+                <Button title="create account" />
+              </form>
             </div>
           </div>
         </div>

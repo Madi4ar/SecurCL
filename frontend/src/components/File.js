@@ -1,10 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 
-export default function File({ title, size, onClick, url }) {
+export default function File({
+  title,
+  size,
+  onClick,
+  url,
+  onDelete,
+  onDownload,
+}) {
   return (
     <>
-      <div className="mt-3 px-5 py-3 rounded-xl min-w-80 bg-white flex justify-between items-center border border-[#ccc]">
+      <div className="mt-3 mr-5 px-5 py-3 rounded-xl min-w-80 bg-white flex justify-between items-center border border-[#ccc]">
         <div className="flex items-center">
           <svg
             width="24"
@@ -33,6 +40,7 @@ export default function File({ title, size, onClick, url }) {
 
         <div className="flex items-center">
           <svg
+            onClick={onDownload}
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -48,7 +56,7 @@ export default function File({ title, size, onClick, url }) {
             />
           </svg>
           <svg
-            onClick={onClick}
+            // onClick={}
             className="ml-5 cursor-pointer"
             width="18"
             height="18"
